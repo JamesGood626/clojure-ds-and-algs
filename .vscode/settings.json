@@ -11,7 +11,7 @@
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveForeground": "#15202b99",
     "statusBar.background": "#11eef6",
-    "statusBarItem.hoverBackground": "#11eef6",
+    "statusBarItem.hoverBackground": "#08c5cc",
     "statusBar.foreground": "#15202b"
   },
   "debug.node.autoAttach": "off",
