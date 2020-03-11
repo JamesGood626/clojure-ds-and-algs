@@ -57,12 +57,28 @@
           tree-with-two-nodes (rb/add-node-to-tree tree-with-one-node :root 70)]
       (is (= (rb/add-node-to-tree tree-with-two-nodes :root 60) {:root {:value 100, :color :black, :left-child {:value 80, :color :red, :left-child {:value 70, :color :red, :left-child {:value 60, :color :red, :left-child nil, :right-child nil}, :right-child nil}, :right-child nil}, :right-child nil}})))))
 
-(deftest maintain-red-black-invariants
-  (testing "starting to implement red-black tree invariant adherance"
-    (let [nodes-to-add [10 20 30 40 50 60 70 80 90 100]
-          work-fn (fn [acc val]
-                    (println "acc is")
-                    (println acc)
-                    (rb/add-node-to-tree acc :root val))
-          tree (reduce work-fn {:root nil} nodes-to-add)]
-      (is (= tree "WHAAT")))))
+
+
+;; (deftest maintain-red-black-invariants
+;;   (testing "starting to implement red-black tree invariant adherance"
+;;     (let [nodes-to-add [10 20 30 40 50 60 70 80 90 100]
+;;           work-fn (fn [acc val]
+;;                     ;; (println "acc is")
+;;                     ;; (println acc)
+;;                     (rb/add-node-to-tree acc :root val))
+;;           tree (reduce work-fn {:root nil} nodes-to-add)]
+;;       (is (= tree "WHAAT")))))
+
+(deftest left-left-balance-test
+  (testing "This shiz betta work"
+    (let [violation-node {:value 80 :color :red :left-child nil :right-child nil}
+          node {:value 90 :color :red :left-child violation-node :right-child nil}
+          tree {:root {:value 100 :color :black :left-child node :right-child nil}}]
+      (is (= (rb/left-left-balance (:root tree)) "WUHH")))))
+
+;; (deftest balance-test
+;;   (testing "This shiz betta work"
+;;     (let [violation-node {:value 80 :color :red :left-child nil :right-child nil}
+;;           node {:value 90 :color :red :left-child violation-node :right-child nil}
+;;           tree {:root {:value 100 :color :black :left-child node :right-child nil}}]
+;;       (is (= (rb/balance (:root tree)) "WUHH")))))
